@@ -19,5 +19,15 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="start_trening">Start trening</string>
+    <string name="log_in">Log In</string>
+    <string name="get_fit">Get Fit</string>
+    <string name="graph_summary">Graph Summary</string>
+    <string name="tdee_calculator">TDEE Calculator</string>
+    <string name="imagegraph">imageGraph</string>
+    <string name="imagelogin">imageLogin</string>
+    <string name="imageyoutube">imageYoutube</string>
+    <string name="imageexercise">imageExercise</string>
+    <string name="imagecalculator">imageCalculator</string>
 
 </resources>
