@@ -13,11 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.workoutapp.R;
+import com.example.workoutapp.databinding.HomeFragmentBinding;
+import com.example.workoutapp.databinding.ProgressFragmentBinding;
+import com.example.workoutapp.settings.SettingsViewModel;
 
 public class ProgressFragment extends Fragment {
 
     private ProgressViewModel mViewModel;
-
+    private ProgressFragmentBinding binding;
     public static ProgressFragment newInstance() {
         return new ProgressFragment();
     }
@@ -25,15 +28,15 @@ public class ProgressFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.progress_fragment, container, false);
+        binding = ProgressFragmentBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
         return view;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(ProgressViewModel.class);
-        // TODO: Use the ViewModel
     }
 
 }

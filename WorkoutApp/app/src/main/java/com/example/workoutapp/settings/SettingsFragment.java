@@ -13,11 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.workoutapp.R;
+import com.example.workoutapp.databinding.ProgressFragmentBinding;
+import com.example.workoutapp.databinding.SettingsFragmentBinding;
 
 public class SettingsFragment extends Fragment {
 
     private SettingsViewModel mViewModel;
-
+    private SettingsFragmentBinding binding;
     public static SettingsFragment newInstance() {
         return new SettingsFragment();
     }
@@ -25,15 +27,16 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.settings_fragment, container, false);
+        binding = SettingsFragmentBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
         return view;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
-        // TODO: Use the ViewModel
     }
+
 
 }

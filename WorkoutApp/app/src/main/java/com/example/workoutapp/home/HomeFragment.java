@@ -2,6 +2,7 @@ package com.example.workoutapp.home;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -16,10 +17,12 @@ import android.widget.Button;
 
 import com.example.workoutapp.R;
 import com.example.workoutapp.SessionActivity;
+import com.example.workoutapp.databinding.HomeFragmentBinding;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel mViewModel;
+    private HomeFragmentBinding binding;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -28,17 +31,25 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        binding = HomeFragmentBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        binding.imageButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SessionActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        View view=inflater.inflate(R.layout.home_fragment, container, false);
 
         return view;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        // TODO: Use the ViewModel
     }
+
 
 }
