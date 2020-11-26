@@ -28,6 +28,8 @@ public class HomeFragment extends Fragment {
         return new HomeFragment();
     }
 
+
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -40,7 +42,6 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
 
         return view;
     }

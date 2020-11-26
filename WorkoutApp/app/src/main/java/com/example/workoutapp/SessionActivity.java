@@ -1,4 +1,6 @@
 package com.example.workoutapp;
+
+import android.app.ActionBar;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.workoutapp.session.HollowFragment;
+import com.example.workoutapp.session.PlankFragment;
+import com.example.workoutapp.session.PushupFragment;
 
 public class SessionActivity extends FragmentActivity {
     /**
@@ -29,11 +33,11 @@ public class SessionActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_session);
-
         // Instantiate a ViewPager2 and a PagerAdapter.
         viewPager = findViewById(R.id.pager);
         pagerAdapter = new ScreenSlidePagerAdapter(this);
         viewPager.setAdapter(pagerAdapter);
+
     }
 
     @Override
@@ -59,7 +63,21 @@ public class SessionActivity extends FragmentActivity {
 
         @Override
         public Fragment createFragment(int position) {
-            return new HollowFragment();
+            switch (position) {
+                case 0:
+                    return new HollowFragment();
+                case 1:
+                    return new PlankFragment();
+                case 2:
+                    return new PushupFragment();
+                case 3:
+                    return new HollowFragment();
+                case 4:
+                    return new HollowFragment();
+                default:
+                    throw new RuntimeException(this.toString() + " Wrong fragment!");
+            }
+
         }
 
         @Override
