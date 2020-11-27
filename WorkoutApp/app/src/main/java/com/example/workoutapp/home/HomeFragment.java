@@ -29,10 +29,6 @@ public class HomeFragment extends Fragment {
     private HomeViewModel mViewModel;
 
 
-    public HomeFragmentBinding getBinding() {
-        return binding;
-    }
-
     private HomeFragmentBinding binding;
     FirebaseAuth auth;
     FirebaseAuth.AuthStateListener authStateListener;
@@ -49,7 +45,7 @@ public class HomeFragment extends Fragment {
             //Toast.makeText(this,"U Signed In successfully",Toast.LENGTH_LONG).show();
             binding.txtLoggInn.setText("Sign Out", TextView.BufferType.EDITABLE);
             startActivity(new Intent(getActivity(), MainActivity.class));
-           
+
         }
         else {
             //Toast.makeText(this,"U Didnt signed in",Toast.LENGTH_LONG).show();
@@ -79,6 +75,13 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        binding.imageBtnYoutube.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ResourceActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         return view;
