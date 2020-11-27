@@ -14,15 +14,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.workoutapp.MainActivity;
 import com.example.workoutapp.R;
 import com.example.workoutapp.SessionActivity;
 import com.example.workoutapp.databinding.HomeFragmentBinding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel mViewModel;
+
+
+    public HomeFragmentBinding getBinding() {
+        return binding;
+    }
+
     private HomeFragmentBinding binding;
     FirebaseAuth auth;
     FirebaseAuth.AuthStateListener authStateListener;
@@ -33,6 +43,19 @@ public class HomeFragment extends Fragment {
         return new HomeFragment();
     }
 
+    public void updateUI(FirebaseUser account){
+
+        if(account != null){
+            //Toast.makeText(this,"U Signed In successfully",Toast.LENGTH_LONG).show();
+            binding.txtLoggInn.setText("Sign Out", TextView.BufferType.EDITABLE);
+            startActivity(new Intent(getActivity(), MainActivity.class));
+           
+        }
+        else {
+            //Toast.makeText(this,"U Didnt signed in",Toast.LENGTH_LONG).show();
+        }
+
+    }
 
 
     @Override
