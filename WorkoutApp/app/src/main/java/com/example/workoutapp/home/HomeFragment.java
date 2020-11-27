@@ -40,13 +40,23 @@ public class HomeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = HomeFragmentBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        binding.imageButton2.setOnClickListener(new View.OnClickListener() {
+        binding.btnExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), SessionActivity.class);
                 startActivity(intent);
             }
         });
+
+        binding.imageBtnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         return view;
     }
