@@ -2,6 +2,7 @@ package com.example.workoutapp.session;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.workoutapp.MainActivity;
 import com.example.workoutapp.R;
 import com.example.workoutapp.SessionActivity;
 import com.example.workoutapp.databinding.FragmentHollowBinding;
@@ -56,6 +58,13 @@ public class HollowFragment extends Fragment {
                 startStopTimer();
             }
         });
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //Creates a Countdown Timer
         countDownTimer = new CountDownTimer(60000, 1000) {
@@ -65,7 +74,7 @@ public class HollowFragment extends Fragment {
             }
 
             public void onFinish() {
-                binding.btnStart.setText("Start");
+                binding.btnStart.setImageResource(R.drawable.ic_baseline_play_circle_filled_24);
                 storeTime = 60 - Integer.parseInt(binding.textViewTimer.getText().toString());
                 binding.textViewStored.setText("You lasted: " + storeTime.toString() + " seconds!");
                 binding.textViewTimer.setText("1:00");
@@ -81,11 +90,11 @@ public class HollowFragment extends Fragment {
     public void startStopTimer() {
         if (!isRunning) {
             countDownTimer.start();
-            binding.btnStart.setText("Stop");
+            binding.btnStart.setImageResource(R.drawable.ic_baseline_pause_circle_filled_24);
             isRunning = true;
         } else {
             countDownTimer.cancel();
-            binding.btnStart.setText("Start");
+            binding.btnStart.setImageResource(R.drawable.ic_baseline_play_circle_filled_24);
             storeTime = 60 - Integer.parseInt(binding.textViewTimer.getText().toString());
             binding.textViewStored.setText("You lasted: " + storeTime.toString() + " seconds!");
             binding.textViewTimer.setText("1:00");

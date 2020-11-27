@@ -18,11 +18,16 @@ import android.widget.Button;
 import com.example.workoutapp.R;
 import com.example.workoutapp.SessionActivity;
 import com.example.workoutapp.databinding.HomeFragmentBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel mViewModel;
     private HomeFragmentBinding binding;
+    FirebaseAuth auth;
+    FirebaseAuth.AuthStateListener authStateListener;
+
+    private final int RC_SIGN_IN = 1;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
