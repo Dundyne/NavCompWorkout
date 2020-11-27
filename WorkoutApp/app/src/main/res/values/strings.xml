@@ -29,5 +29,6 @@
     <string name="imageyoutube">imageYoutube</string>
     <string name="imageexercise">imageExercise</string>
     <string name="imagecalculator">imageCalculator</string>
+    <string name="sign_in">Sign In</string>
 
 </resources>

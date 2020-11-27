@@ -43,6 +43,16 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        binding.imageBtnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
         return view;
     }
 
