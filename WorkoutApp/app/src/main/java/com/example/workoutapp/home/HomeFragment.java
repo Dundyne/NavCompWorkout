@@ -12,8 +12,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.workoutapp.GraphActivity;
+import com.example.workoutapp.MainActivity;
 import com.example.workoutapp.SessionActivity;
 import com.example.workoutapp.TdeeActivity;
 import com.example.workoutapp.YoutubeActivity;
