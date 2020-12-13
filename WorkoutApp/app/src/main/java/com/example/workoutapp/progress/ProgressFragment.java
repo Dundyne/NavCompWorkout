@@ -2,6 +2,8 @@ package com.example.workoutapp.progress;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,10 +14,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.workoutapp.MainActivity;
 import com.example.workoutapp.R;
 import com.example.workoutapp.databinding.HomeFragmentBinding;
 import com.example.workoutapp.databinding.ProgressFragmentBinding;
 import com.example.workoutapp.settings.SettingsViewModel;
+
+import java.util.List;
+import java.util.Locale;
 
 public class ProgressFragment extends Fragment {
 
@@ -30,6 +36,9 @@ public class ProgressFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = ProgressFragmentBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+
+        Geocoder geocoder = new Geocoder(this.getContext(), Locale.getDefault());
+
         return view;
     }
 

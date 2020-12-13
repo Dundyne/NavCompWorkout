@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".settings.SettingsFragment">
 
-    <TextView
+    <FrameLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Settings" />
-
+        android:layout_height="wrap_content"/>
 </FrameLayout>

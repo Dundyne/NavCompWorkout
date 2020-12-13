@@ -1,0 +1,62 @@
+ProsjektGruppe 5
+Robert Lundeby og Henrik Hafell
+
+Notater til presentasjon
+
+Prototype 1:
+
+- Funksjonalitet:
+
+- Exercise med timer som lagres i sharedpreferences
+
+- Graf som viser fremgang i øvelsene
+
+- Knapp som henter ut nåverende lokasjon
+
+- TDEE Kalkulator
+
+- Åpne Youtube video i appen
+
+- Enkle Settings slik som Dark Mode
+
+Alt dette skal implementeres i prototype 2 på en bedre måte.
+
+
+Prototype 2:
+
+Funksjonalitet:
+
+I prototype 2 har vi fokusert på å få all GUI på plass før vi legger inn all 
+funksjonalitet fra prototype 1
+
+Ny Funksjonalitet:
+
+- Firebase login med Google
+
+- Firestore lagring: ikke ferdig implementert
+
+- Hente ut nettside: WebView myWebView = (WebView) findViewById(R.id.webview);
+                    myWebView.loadUrl("https://www.matprat.no/oppskrifter/familien/p/pytt-i-panne-med-lammeskav/%22);
+
+- Exercise med reps
+
+
+GUI:
+
+- Navigation Component koblet med Navigation Bar - nav_graph og fragments
+
+- ViewPager - Scrolle mellom Exercises
+
+- ViewBinding - Enkelt koble fragment og activity med view
+
+- Floating Action Buttons - Start Exercise
+
+- VideoView - kattepus
+
+- States på knapper
+
+- Vector Icons i ImageButtons
+
+- Adaptive Buttons - ligger i mipmap
+
+- Vertical/Landskap i de fleste sider

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.CountDownTimer;
@@ -22,8 +23,15 @@ import com.example.workoutapp.R;
 import com.example.workoutapp.SessionActivity;
 import com.example.workoutapp.databinding.FragmentHollowBinding;
 import com.example.workoutapp.databinding.ProgressFragmentBinding;
+import com.example.workoutapp.exercises.ExerciseModel;
 import com.example.workoutapp.progress.ProgressFragment;
 import com.example.workoutapp.progress.ProgressViewModel;
+import com.example.workoutapp.tinydb.TinyDB;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HollowFragment extends Fragment {
 
@@ -33,9 +41,15 @@ public class HollowFragment extends Fragment {
         return new HollowFragment();
     }
 
+    private List<ExerciseModel> exerciseList;
+
     CountDownTimer countDownTimer;
     Boolean isRunning = false;
     Integer storeTime;
+
+    TinyDB tinydb;
+    private FirebaseFirestore firestoreDb;
+    private CollectionReference exercisesCollection;
 
     @Override
     public void onResume() {
@@ -46,6 +60,11 @@ public class HollowFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        tinydb = new TinyDB(getActivity().getApplicationContext());
+        exerciseList = new ArrayList<>();
+        firestoreDb = FirebaseFirestore.getInstance();
+
+        exercisesCollection = firestoreDb.collection("hollow");
         //Bindings
         binding = FragmentHollowBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
@@ -78,13 +97,27 @@ public class HollowFragment extends Fragment {
                 storeTime = 60 - Integer.parseInt(binding.textViewTimer.getText().toString());
                 binding.textViewStored.setText("You lasted: " + storeTime.toString() + " seconds!");
                 binding.textViewTimer.setText("1:00");
-
+                exercisesCollection.add(new ExerciseModel("hollow",storeTime));
             }
         };
 
 
         return view;
     }
+    public void saveToSharedPreferences(){
+        if(tinydb.getListInt("hollow").isEmpty()){
+            ArrayList<Integer> progress = new ArrayList<>();
+            progress.add(storeTime);
+            tinydb.putListInt("hollow", progress);
+        }
+        else {
+            ArrayList<Integer> progress = tinydb.getListInt("hollow");
+            progress.add(storeTime);
+            tinydb.putListInt("hollow", progress);
+        }
+
+    }
+
 
     //Logic for start button.
     public void startStopTimer() {
@@ -99,6 +132,7 @@ public class HollowFragment extends Fragment {
             binding.textViewStored.setText("You lasted: " + storeTime.toString() + " seconds!");
             binding.textViewTimer.setText("1:00");
             isRunning = false;
+            exercisesCollection.add(new ExerciseModel("hollow",storeTime));
         }
     }
 

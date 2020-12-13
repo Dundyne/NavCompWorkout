@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,13 @@ import com.example.workoutapp.MainActivity;
 import com.example.workoutapp.R;
 import com.example.workoutapp.databinding.FragmentPlankBinding;
 import com.example.workoutapp.databinding.FragmentPushupBinding;
+import com.example.workoutapp.exercises.ExerciseModel;
+import com.example.workoutapp.exercises.SessionModel;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PushupFragment extends Fragment {
@@ -25,8 +33,9 @@ public class PushupFragment extends Fragment {
         return new PushupFragment();
     }
     Integer counter;
-
-
+    private FirebaseFirestore firestoreDb;
+    private CollectionReference exercisesCollection;
+    private List<ExerciseModel> exerciseList;
     @Override
     public void onResume() {
         super.onResume();
@@ -39,11 +48,19 @@ public class PushupFragment extends Fragment {
         binding = FragmentPushupBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         binding.textViewTitle.setText("Pushups");
+
+        exerciseList = new ArrayList<>();
+        firestoreDb = FirebaseFirestore.getInstance();
+
+        exercisesCollection = firestoreDb.collection("pushups");
+
         counter = 5;
         binding.textViewCount.setText(counter.toString());
         binding.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Hent og lagre data
+                exercisesCollection.add(new ExerciseModel("pushups",counter));
 
             }
         });

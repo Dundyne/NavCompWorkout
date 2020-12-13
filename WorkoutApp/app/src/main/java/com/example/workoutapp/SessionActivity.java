@@ -67,13 +67,13 @@ public class SessionActivity extends FragmentActivity {
                 case 0:
                     return new HollowFragment();
                 case 1:
-                    return new PushupFragment();
+                    return new PlankFragment();
                 case 2:
                     return new PushupFragment();
                 case 3:
                     return new HollowFragment();
                 case 4:
-                    return new HollowFragment();
+                    return new PlankFragment();
                 default:
                     throw new RuntimeException(this.toString() + " Wrong fragment!");
             }

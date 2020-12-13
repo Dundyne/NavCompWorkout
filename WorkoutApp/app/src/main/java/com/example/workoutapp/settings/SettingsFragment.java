@@ -1,5 +1,6 @@
 package com.example.workoutapp.settings;
 
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -29,6 +30,7 @@ public class SettingsFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = SettingsFragmentBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        getChildFragmentManager().beginTransaction().replace(R.id.content,new SettingsFragmentNav()).commit();
         return view;
     }
 
