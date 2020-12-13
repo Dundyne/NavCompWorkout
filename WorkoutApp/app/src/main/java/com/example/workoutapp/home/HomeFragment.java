@@ -20,10 +20,17 @@ import com.example.workoutapp.YoutubeActivity;
 import com.example.workoutapp.databinding.HomeFragmentBinding;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel mViewModel;
+
+
+    public HomeFragmentBinding getBinding() {
+        return binding;
+    }
+
     private HomeFragmentBinding binding;
     FirebaseAuth auth;
     FirebaseAuth.AuthStateListener authStateListener;
@@ -34,6 +41,19 @@ public class HomeFragment extends Fragment {
         return new HomeFragment();
     }
 
+    public void updateUI(FirebaseUser account){
+
+        if(account != null){
+            //Toast.makeText(this,"U Signed In successfully",Toast.LENGTH_LONG).show();
+            binding.txtLoggInn.setText("Sign Out", TextView.BufferType.EDITABLE);
+            startActivity(new Intent(getActivity(), MainActivity.class));
+           
+        }
+        else {
+            //Toast.makeText(this,"U Didnt signed in",Toast.LENGTH_LONG).show();
+        }
+
+    }
 
 
     @Override
