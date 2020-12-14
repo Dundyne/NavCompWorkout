@@ -15,16 +15,12 @@
       },
       "oauth_client": [
         {
-          "client_id": "85456406558-l4sveviv6bobocks2iafdo7snpnia5fa.apps.googleusercontent.com",
+          "client_id": "85456406558-p24fq6o0qro0fovljctt913tjh5qcvtl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.workoutapp",
-            "certificate_hash": "490fd389a5194b8fc451e36691863e418c8c906e"
+            "certificate_hash": "16cfa34c6d5369ed3222fc4b2c75e8bb5f8abeb0"
           }
-        },
-        {
-          "client_id": "85456406558-t3rvtge9ekg1778h4d8alr3u5etj22he.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
@@ -34,12 +30,7 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "85456406558-t3rvtge9ekg1778h4d8alr3u5etj22he.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

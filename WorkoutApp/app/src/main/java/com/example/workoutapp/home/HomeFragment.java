@@ -14,13 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.workoutapp.GoogleActivity;
 import com.example.workoutapp.GraphActivity;
 import com.example.workoutapp.MainActivity;
 import com.example.workoutapp.SessionActivity;
 import com.example.workoutapp.TdeeActivity;
 import com.example.workoutapp.YoutubeActivity;
 import com.example.workoutapp.databinding.HomeFragmentBinding;
-import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
     public static HomeFragment newInstance() {
         return new HomeFragment();
     }
-
+/*
     public void updateUI(FirebaseUser account){
 
         if(account != null){
@@ -55,7 +55,7 @@ public class HomeFragment extends Fragment {
             //Toast.makeText(this,"U Didnt signed in",Toast.LENGTH_LONG).show();
         }
 
-    }
+    }*/
 
 
     @Override
@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment {
         binding.imageBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                Intent intent = new Intent(getActivity(), GoogleActivity.class);
                 startActivity(intent);
             }
         });

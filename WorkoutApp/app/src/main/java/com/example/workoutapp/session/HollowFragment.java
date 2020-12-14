@@ -26,7 +26,7 @@ import com.example.workoutapp.databinding.ProgressFragmentBinding;
 import com.example.workoutapp.exercises.ExerciseModel;
 import com.example.workoutapp.progress.ProgressFragment;
 import com.example.workoutapp.progress.ProgressViewModel;
-import com.example.workoutapp.tinydb.TinyDB;
+
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -47,7 +47,7 @@ public class HollowFragment extends Fragment {
     Boolean isRunning = false;
     Integer storeTime;
 
-    TinyDB tinydb;
+
     private FirebaseFirestore firestoreDb;
     private CollectionReference exercisesCollection;
 
@@ -60,7 +60,7 @@ public class HollowFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        tinydb = new TinyDB(getActivity().getApplicationContext());
+
         exerciseList = new ArrayList<>();
         firestoreDb = FirebaseFirestore.getInstance();
 
@@ -103,19 +103,6 @@ public class HollowFragment extends Fragment {
 
 
         return view;
-    }
-    public void saveToSharedPreferences(){
-        if(tinydb.getListInt("hollow").isEmpty()){
-            ArrayList<Integer> progress = new ArrayList<>();
-            progress.add(storeTime);
-            tinydb.putListInt("hollow", progress);
-        }
-        else {
-            ArrayList<Integer> progress = tinydb.getListInt("hollow");
-            progress.add(storeTime);
-            tinydb.putListInt("hollow", progress);
-        }
-
     }
 
 

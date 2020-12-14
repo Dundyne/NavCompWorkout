@@ -48,10 +48,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-core'
     implementation 'com.jjoe64:graphview:4.2.2'
-    implementation files('libs\\YouTubeAndroidPlayerApi.jar')
-    implementation files('libs\\YouTubeAndroidPlayerApi.jar')
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
     def nav_version = "2.3.1"
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
     // Java language implementation
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"

@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.example.workoutapp.MainActivity;
 import com.example.workoutapp.R;
-import com.example.workoutapp.databinding.HomeFragmentBinding;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -43,12 +42,14 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken("85456406558-u9o0p9lrum9nobqju1brhb8kismfnmdg.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
 
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         mAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
@@ -89,8 +90,8 @@ public class LoginActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        homeFragment.updateUI(currentUser);
+        //FirebaseUser currentUser = mAuth.getCurrentUser();
+        //homeFragment.updateUI(currentUser);
     }
 
 
@@ -105,11 +106,11 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            homeFragment.updateUI(user);
+                            //homeFragment.updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithCredential:failure", task.getException());
-                            homeFragment.updateUI(null);
+                            //homeFragment.updateUI(null);
                         }
 
                         // ...

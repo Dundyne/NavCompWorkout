@@ -29,7 +29,7 @@ import com.example.workoutapp.exercises.ExerciseModel;
 import com.example.workoutapp.exercises.SessionModel;
 import com.example.workoutapp.progress.ProgressFragment;
 import com.example.workoutapp.progress.ProgressViewModel;
-import com.example.workoutapp.tinydb.TinyDB;
+
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -50,7 +50,7 @@ public class PlankFragment extends Fragment {
     Boolean isRunning = false;
     Integer storeTime;
 
-    TinyDB tinydb;
+
     private FirebaseFirestore firestoreDb;
     private CollectionReference exercisesCollection;
 
@@ -63,7 +63,7 @@ public class PlankFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        tinydb = new TinyDB(getActivity().getApplicationContext());
+
         exerciseList = new ArrayList<>();
         firestoreDb = FirebaseFirestore.getInstance();
 

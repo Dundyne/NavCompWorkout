@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.example.workoutapp.databinding.ActivityGraphBinding;
 import com.example.workoutapp.exercises.ExerciseModel;
 import com.example.workoutapp.exercises.SessionModel;
-import com.example.workoutapp.tinydb.TinyDB;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -144,23 +144,29 @@ public class GraphActivity extends AppCompatActivity implements AdapterView.OnIt
 
    public void createGraph(){
 
-        int count = 0;
 
-        //Implementer senere ArrayList<Integer> progress = tinydb.getListInt(exercise);
+
+        //Array med verdier per øvelse
         ArrayList<Integer> progress = getExerciseValueTwoWeeks();
-        /*for (ExerciseModel ex: exerciseList
-             ) {
-            progress.add(ex.getValue());
-        }*/
+
+        //En Key-Value array
         DataPoint[] dataPoints = new DataPoint[progress.size()];
 
+        //En Foreach loop har ikke index som krever en counter utafor.
+       //dataPoints[count] bestemmer posisjon i arrayen.
+
+       //new DataPoint(Key = count, progress.item.value = val)
+        int count = 0;
         for(int val : progress){
             dataPoints[count] = new DataPoint(count, val);
             count++;
         }
+
+        //progress.get(0) skal da matche dataPoints[0].getValue()
         lineSeriesTest = new LineGraphSeries<>(dataPoints);
 
         linegraph.removeAllSeries();
         linegraph.addSeries(lineSeriesTest);
+
     }
 }
