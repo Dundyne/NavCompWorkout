@@ -10,6 +10,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -104,7 +105,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Location> task) {
                 Location location = task.getResult();
-                if(location != null && location != oldLocation) {
+
+                if(location != null && location != oldLocation ) {
 
                     try {
                         Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
@@ -114,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
                         );
                         oldLocation = location;
                         localeCollection.add(new Location(location));
+
+                        //Ingen anelse hvorfor toast ikke funker
                         Toast.makeText(getApplicationContext(), "Latitude" + addresses.get(0).getAddressLine(0)  , Toast.LENGTH_LONG).show();
                         Log.d("mapstag", addresses.get(0).getAddressLine(0));
                     } catch (IOException e) {

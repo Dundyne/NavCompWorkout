@@ -44,7 +44,7 @@ public class ProgressFragment extends Fragment {
     private ProgressFragmentBinding binding;
     private FirebaseFirestore firestoreDb;
     private FirebaseAuth mAuth;
-
+    Calendar instance = Calendar.getInstance();
 
     private CollectionReference hollowCollection;
     private CollectionReference plankCollection;
@@ -58,7 +58,7 @@ public class ProgressFragment extends Fragment {
     TextView username;
     TextView btnTdee;
     TextView favorite;
-
+    TextView week;
     public static ProgressFragment newInstance() {
         return new ProgressFragment();
     }
@@ -73,7 +73,7 @@ public class ProgressFragment extends Fragment {
         username = binding.textViewWelcome;
         firestoreDb = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-
+        week = binding.textViewWeek;
         hollowCollection = firestoreDb.collection("hollow");
         plankCollection = firestoreDb.collection("plank");
         pushupsCollection = firestoreDb.collection("pushups");
@@ -86,7 +86,7 @@ public class ProgressFragment extends Fragment {
         createFirestoreReadListener();
 
 
-
+        week.setText("Current week " +instance.get(Calendar.WEEK_OF_YEAR));
         return view;
     }
 
