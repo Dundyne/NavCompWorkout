@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".TdeeActivity">
 
-    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintTop_toBottomOf="@+id/spinner" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:text="Calculate" android:onClick="calcTDEE" android:id="@+id/BtnTDEE"/>
+    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintTop_toBottomOf="@+id/spinner" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:text="Calculate"  android:id="@+id/BtnTDEE"/>
 
     <EditText android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" android:id="@+id/WeightTxt" app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.497" android:inputType="number" android:hint="Weight(KG)" android:ems="10"/>
 

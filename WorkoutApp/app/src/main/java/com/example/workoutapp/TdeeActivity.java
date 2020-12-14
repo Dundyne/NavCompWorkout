@@ -2,6 +2,7 @@ package com.example.workoutapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,8 +13,12 @@ import android.widget.Spinner;
 
 import com.example.workoutapp.databinding.ActivityTdeeBinding;
 import com.example.workoutapp.exercises.ExerciseModel;
+import com.example.workoutapp.exercises.TdeeModel;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.List;
+import java.util.Map;
 
 public class TdeeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     private ActivityTdeeBinding binding;
@@ -41,9 +46,16 @@ public class TdeeActivity extends AppCompatActivity implements AdapterView.OnIte
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
+        binding.BtnTDEE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calcTDEE();
+            }
+        });
+
     }
 
-    public void calcTDEE(View v){
+    public void calcTDEE(){
         weight = binding.WeightTxt;
         height = binding.HeightTxt;
         age = binding.AgeTxt;
@@ -61,8 +73,10 @@ public class TdeeActivity extends AppCompatActivity implements AdapterView.OnIte
             s = -161;
         }
         float resultsFloat = (10 * parsedWeight) + (6.25f * parsedHeight) - (5 * parsedAge) + s;
-        Float fObj = new Float(resultsFloat);
-        //exercisesCollection.add(fObj);
+
+
+        exercisesCollection.add(new TdeeModel((int)resultsFloat));
+
         results.setText(String.valueOf(resultsFloat) + " Calories Daily");
     }
     public void onItemSelected(AdapterView<?> parent, View view,

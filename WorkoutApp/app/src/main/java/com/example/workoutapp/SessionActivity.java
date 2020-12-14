@@ -16,7 +16,7 @@ public class SessionActivity extends FragmentActivity {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 5;
+    private static final int NUM_PAGES = 3;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -70,10 +70,6 @@ public class SessionActivity extends FragmentActivity {
                     return new PlankFragment();
                 case 2:
                     return new PushupFragment();
-                case 3:
-                    return new HollowFragment();
-                case 4:
-                    return new PlankFragment();
                 default:
                     throw new RuntimeException(this.toString() + " Wrong fragment!");
             }

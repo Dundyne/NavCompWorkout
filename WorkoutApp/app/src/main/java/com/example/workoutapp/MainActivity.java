@@ -15,10 +15,13 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.workoutapp.databinding.ActivityMainBinding;
 import com.example.workoutapp.exercises.ExerciseModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -26,8 +29,10 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
 import java.io.IOException;
 import java.util.List;
@@ -38,15 +43,22 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore firestoreDb;
     private CollectionReference localeCollection;
     Location oldLocation;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         firestoreDb = FirebaseFirestore.getInstance();
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setPersistenceEnabled(true)
+                .build();
+        firestoreDb.setFirestoreSettings(settings);
+
 
         localeCollection = firestoreDb.collection("locale");
+
+
+
         ///////////
         SharedPreferences sharedPreferences
                 = this.getSharedPreferences(

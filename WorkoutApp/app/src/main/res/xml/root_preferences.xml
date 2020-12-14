@@ -6,10 +6,7 @@
             android:defaultValue="false"
             android:key="darkmode"
             android:title="Dark mode" />
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="notifications"
-            android:title="Notifications" />
+
 
     </PreferenceCategory>
 </PreferenceScreen>

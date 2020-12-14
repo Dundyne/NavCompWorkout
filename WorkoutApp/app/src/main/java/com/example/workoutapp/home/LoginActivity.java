@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                //Denne token fungerer kun for release APK, så login fungerer ikke ved om du kjører i android studio.
                 .requestIdToken("85456406558-u9o0p9lrum9nobqju1brhb8kismfnmdg.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
